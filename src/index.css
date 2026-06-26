@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  /* Futuristic Violet & Indigo Palette */
+  --color-background: #0a071b; /* Deep midnight violet */
+  --color-foreground: #f1edfa; /* Soft crisp white/purple tint */
+
+  --color-card: #120e2e;
+
+  --color-primary: #a855f7; /* Vibrant Purple */
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #ec4899; /* Vibrant Pink/Fuchsia */
+  --color-secondary-foreground: #ffffff;
+
+  --color-accent: #06b6d4; /* Neon Cyan for highlights */
+
+  --color-muted: #1e1945;
+  --color-muted-foreground: #94a3b8;
+
+  --color-border: color-mix(in srgb, var(--color-primary) 20%, transparent);
+
+  --radius: 1rem;
+
+  --color-surface: #100b26;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+    position: relative;
+    /* 📱 FIXED: Forced absolute axis locking at the root block layout level */
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* 📱 FIXED: Moved pseudo elements into global fixed variables. 
+    Using viewport width units (vw) instead of standard % metrics stops 
+    the blur circles from widening the page content block on mobile devices.
+  */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  body::before {
+    top: 10%;
+    left: -20vw;
+    background: var(--color-primary);
+    animation: aurora-drift 25s infinite alternate ease-in-out;
+  }
+
+  body::after {
+    top: 50%;
+    right: -20vw;
+    background: var(--color-accent);
+    animation: aurora-drift 30s infinite alternate-reverse ease-in-out;
+  }
+}
+
+@layer components {
+  /* Enhanced sleek glassmorphism */
+  .glass {
+    background-color: rgba(16, 11, 38, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+  }
+
+  .glass-strong {
+    background-color: rgba(10, 7, 27, 0.75);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 25px rgba(168, 85, 247, 0.65), 0 0 50px rgba(6, 182, 212, 0.3);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.4);
+  }
+}
+
+@layer utilities {
+  @keyframes aurora-drift {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, 20px) scale(1.1); }
+    100% { transform: translate(-20px, 40px) scale(0.9); }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+}
