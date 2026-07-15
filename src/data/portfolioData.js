@@ -27,7 +27,7 @@ export const projectsList = [
     tags: ["React.js", "Tailwind CSS", "Lucide Icons", "Vite", "Web3Forms"],
     image: "/projects/portfolio.jpg", 
     demo: "https://lahirujanuka.vercel.app", 
-    github: "https://github.com/lahirujanuka/portfolio"
+    github: "https://github.com/lahirujanuka/my-portfolio"
     },
     {
     title: "Govi Gnana (ගොවි ඥාන)",
