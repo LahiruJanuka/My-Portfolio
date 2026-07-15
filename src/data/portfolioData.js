@@ -34,7 +34,7 @@ export const projectsList = [
     desc: "An AI-powered agricultural market insights and crop price forecasting platform tailored for Sri Lankan markets. Built with an automated data ingestion pipeline scraping CBSL reports, PDF table extraction, and a LangGraph multi-agent orchestration workflow to analyze historical price trends.",
     tags: ["LangGraph", "Python", "Streamlit", "Pandas", "GitHub Actions", "Groq API"],
     image: "/projects/govi-gnana.png",
-    demo: "https://govi-gnana.streamlit.app/",
+    demo: "https://agri-price-predictor.streamlit.app/",
     github: "https://github.com/LahiruJanuka/Agri-Price-Predictor.git"
     },
     {
